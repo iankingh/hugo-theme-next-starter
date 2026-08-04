@@ -1,110 +1,106 @@
-[中文](#) | [English](https://github.com/hugo-next/hugo-theme-next-starter/blob/main/README.md)
+中文 | [English](README.md)
 
-# Hugo NexT 主题启动器
+# Hugo NexT 主題啟動器
 
-本启动器是为初学者所准备的，如果你正在准备搭建个人博客站，那么参考如下步骤便可快速完成。加油，祝你好运！:tada::tada::tada:
+這是 [Hugo NexT](https://github.com/hugo-next/hugo-theme-next) 的雙語範例站與起始範本，
+包含示範文章、選單、資料及設定；主題本身以 Git submodule 固定版本。
 
-> **Note**
-> 请确认你的电脑上已经安装有 [Git](https://git-scm.com/downloads) 和 [Hugo](https://github.com/gohugoio/hugo/releases/) 两款软件。
+## 環境需求
 
+- Git
+- Hugo **Extended 0.146.0 以上**（依目前主題的最低版本要求）
 
-## Vercel部署
+儲存庫記錄的主題 pointer 目前對應 Hugo NexT v4.8.3。
 
-若想在 Vercel 平台上部署站点可直接点击右侧的按钮：[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhugo-next%2Fhugo-theme-next-starter&env=HUGO_VERSION&envDescription=Enter%20latest%20version%20of%20Hugo%20engine.&envLink=https%3A%2F%2Fgithub.com%2Fgohugoio%2Fhugo%2Freleases%2F&project-name=my-blog&repo-name=my-blog&demo-title=Hugo%20NexT%20Theme&demo-description=Easily%20%26%20powerful%20theme%20of%20Hugo%20engine.&demo-url=https%3A%2F%2Fhugo-next.eu.org%2F&demo-image=https%3A%2F%2Fimgs.lisenhui.cn%2Fhugo-next%2Fhugo-next-demo.png&install-command=git%20submodule%20add%20https%3A%2F%2Fgithub.com%2Fhugo-next%2Fhugo-theme-next.git%20themes%2Fhugo-theme-next)
+## 連同主題複製
 
-### ➕ 创建 Github 仓库
+`.gitmodules` 使用 SSH 網址，因此最直接的方式需要已設定 GitHub SSH key：
 
-请使用 Github 账户授权登录，参考下面截图输入新仓库名字，点击 `Create` 按钮（注意确认否要创建私有仓库），接下来在 HUGO_VERSION 中输入 `Hugo` 的最新版本号并发布。
-
-![deploy-with-vercel-01.png](/static/imgs/hugo-next/deploy-with-vercel-01.png)
-
-### 🏗 调整框架
-
-首次部署由于 Vercel 的问题站点无法直接访问，参考下面截图在设置中调整框架为 `Hugo` 并保存。
-
-![deploy-with-vercel-02.png](/static/imgs/hugo-next/deploy-with-vercel-02.png)
-
-### 🚧 重新部署
-
-切换到 `Deployment` 标签页，参考下面截图操作，重新发布后站点就可以正常访问啦。
-
-![deploy-with-vercel-03.png](/static/imgs/hugo-next/deploy-with-vercel-03.png)
-
-## ⏬ 克隆主题
-
-点击右上角的 `Use this template` 绿色按钮然后填写代码仓库的相关信息，参考如下：
-
-![使用模板创建](/static/imgs/hugo-next/use-hugo-next-starter.png)
-
-最后点击 `Create repository from template` 绿色按钮，会直接在你的空间中生成站点代码，再使用`git clone`命令把它克隆到本地进行创作。
-
-记得首次完全克隆后，需要在根目录中使用如下的 `Git` 子模块更新命令拉取 `hugo-theme-next` 主题的最新版本。
-
-```
-# 首次初始化操作
-$ git submodule update --init --recursive
-# 后续更新操作
-$ git submodule update --remote
+```bash
+git clone --recurse-submodules https://github.com/iankingh/hugo-theme-next-starter.git
+cd hugo-theme-next-starter
 ```
 
-> **Note**
-> 注意：当你在中国境内，建议先将 `.gitmodules` 的仓库指向 `Gitee` 地址，再执行上述的命令速度会更快。
+若先前未取得 submodule：
 
-## 💻 本地预览
-
-在站点根目录下，执行自带的 `startup.sh` 启动脚本，当看到输出信息中带有 `stop` 字样时便表示启动成功，此时打开浏览器输入默认地址[http://localhost:1414/](http://localhost:1414/)访问浏览效果。
-
-
-```shell
-$ sh startup.sh
-========================================
-  ███╗   ██╗███████╗██╗  ██╗████████╗
-  ████╗  ██║██╔════╝╚██╗██╔╝╚══██╔══╝
-  ██╔██╗ ██║█████╗   ╚███╔╝    ██║
-  ██║╚██╗██║██╔══╝   ██╔██╗    ██║
-  ██║ ╚████║███████╗██╔╝ ██╗   ██║
-  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝   ╚═╝
-========================================
-Hugo NexT version 4.3.1
-Documentation: https://hugo-next.eu.org
-========================================
-Start building sites …
-hugo v0.102.3-b76146b129d7caa52417f8e914fc5b9271bf56fc+extended windows/amd64 BuildDate=2022-09-01T10:16:19Z VendorInfo=gohugoio
-
-                   | ZH-CN
--------------------+--------
-  Pages            |    71
-  Paginator pages  |     0
-  Non-page files   |     0
-  Static files     |    43
-  Processed images |     0
-  Aliases          |    26
-  Sitemaps         |     1
-  Cleaned          |     0
-
-Built in 233 ms
-Watching for changes in C:\xxx\hugo-theme-next-starter\{content,data,themes}
-Watching for config changes in C:\xxx\hugo-theme-next-starter\config\_default
-Environment: "development"
-Serving pages from memory
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at //localhost:1414/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
+```bash
+git submodule update --init --recursive
 ```
 
-## 🎨 效果预览
+只使用 HTTPS 時，可先在本機覆寫 submodule 網址：
 
-![Hugo NexT Demo](/static/imgs/hugo-next/hugo-next-demo.png)
+```bash
+git config submodule.themes/hugo-theme-next.url https://github.com/hugo-next/hugo-theme-next.git
+git submodule update --init --recursive
+```
 
-## 🎉 发布
+`startup.sh` 會讀取主題的 `VERSION` 檔，因此必須先完成 submodule 初始化。
 
-执行 `hugo` 命令生成全站静态文件，并把文件部署到类似 `Nginx` 的 Web 服务器即可。若如自己没有服务器的话，也可以直接开启 `Github Pages` 功能，会在你推送本地文件到服务器时，自动生成站点的静态文件，使用详情可关注：[Github Pages](https://pages.github.com/)。
+## 預覽與建置
 
-> **Note**
-> 请将 `config/_default/params.yaml` 配置文件中相关参数调整为你自己的实际环境，比如 评论插件，统计功能，分享功能等。
+```bash
+# 在 http://localhost:1414/ 預覽
+sh startup.sh
 
-## 📜 许可证
+# 不顯示啟動畫面的等效指令
+hugo server --port 1414
 
-[MIT 许可证](LICENSE)
+# 正式建置，輸出至 public/
+hugo --minify
+```
 
-Copyright (c) 2022， hugo-next 团队
+`public/`、Hugo 產生的 resources 與 lock files 已由 Git 忽略。
+
+### 已知設定阻礙
+
+目前的 `config/_default/menus.en-us.yaml` 在 `math` 選單項目重複定義了兩次
+`parent`。Hugo 0.164.0 會拒絕這個重複 YAML key，因此預覽與正式建置都會在
+載入設定時停止。使用上述指令前，需另以站點維護變更移除其中一行相同的
+`parent: example`。
+
+## 自訂範本
+
+- `config/_default/hugo.yaml`：網址、標題、語言、輸出格式及 Markdown 設定。
+- `config/_default/languages.yaml`：中文與英文語言定義。
+- `config/_default/menus*.yaml`：各語言的導覽選單。
+- `config/_default/params*.yaml`：NexT 外觀與第三方整合設定。
+- `content/`：雙語關於、歸檔、友情連結及功能範例文章。
+- `data/flinks/`：各語言的友情連結資料。
+- `static/`：直接複製的示範圖片、音訊與其他靜態檔案。
+- `themes/hugo-theme-next/`：固定版本的上游主題；站點內容不應放入此目錄。
+
+發布前至少要替換範例 `baseURL`、標題、作者資訊、選單、文章，以及所有已啟用的
+第三方服務設定。
+
+## 部署與自動化
+
+本儲存庫**沒有網站建置或 GitHub Pages 部署工作流程**。執行
+`hugo --minify` 後，可將 `public/` 靜態檔交由自行選擇的託管服務發布。
+
+唯一的工作流程 `.github/workflows/sync-2-gitee.yml` 會在本儲存庫的 `main`
+收到 push 時執行，再將寫死的上游 `hugo-next/hugo-theme-next-starter` 來源鏡像
+到指定的 Gitee 儲存庫。它需要 `GITEE_RSA_PRIVATE_KEY` secret，且不會建置或
+部署範例網站。Fork 若不擁有該鏡像，應檢查或停用此工作流程。
+
+## 更新主題
+
+submodule 設定追蹤上游主題的 `main`：
+
+```bash
+git submodule update --remote themes/hugo-theme-next
+hugo --minify
+git add themes/hugo-theme-next
+```
+
+提交新的 pointer 前，請先檢查主題版本說明與建置結果。
+
+## 相關儲存庫
+
+- `hugo-next/hugo-theme-next`：本範本使用的上游主題。
+- `iankingh/blog`：使用相同主題、但獨立客製化的實際部落格。
+- `iankingh/iankingh.github.io`：導向該部落格的轉址頁。
+- `iankingh/iankingh`：GitHub 個人檔案 README，不參與本站建置。
+
+## 授權
+
+請參閱 [LICENSE](LICENSE)。

@@ -1,110 +1,118 @@
-[中文](https://github.com/hugo-next/hugo-theme-next-starter/blob/main/README.zh.md) | [English](#)
+[中文](README.zh.md) | English
 
 # Hugo NexT theme starter
 
-It's usefully for people who are first time notice Hugo framework and want to create himself blog site. Following steps as below and good luck for you! :tada::tada::tada:
+A bilingual example site and starting point for
+[Hugo NexT](https://github.com/hugo-next/hugo-theme-next). It contains sample
+content, menus, data, and configuration; the theme itself is pinned as a Git
+submodule.
 
-> **Note**
-> Before that make sure your PC were installed [Git](https://git-scm.com/downloads) and [Hugo](https://github.com/gohugoio/hugo/releases/) software.
+## Requirements
 
-## Deploy on Vercel
+- Git
+- Hugo **Extended 0.146.0 or newer**, as required by the pinned theme
 
-Now you can deployment your site on Vercel platform by this button: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhugo-next%2Fhugo-theme-next-starter&env=HUGO_VERSION&envDescription=Enter%20latest%20version%20of%20Hugo%20engine.&envLink=https%3A%2F%2Fgithub.com%2Fgohugoio%2Fhugo%2Freleases%2F&project-name=my-blog&repo-name=my-blog&demo-title=Hugo%20NexT%20Theme&demo-description=Easily%20%26%20powerful%20theme%20of%20Hugo%20engine.&demo-url=https%3A%2F%2Fhugo-next.eu.org%2F&demo-image=https%3A%2F%2Fimgs.lisenhui.cn%2Fhugo-next%2Fhugo-next-demo.png&install-command=git%20submodule%20add%20https%3A%2F%2Fgithub.com%2Fhugo-next%2Fhugo-theme-next.git%20themes%2Fhugo-theme-next)
+The checked-in theme pointer currently corresponds to Hugo NexT v4.8.3.
 
-### ➕ Create Github repository
+## Clone with the theme
 
-Please login Vercel with your Github account, then enter your repository name and click `Create`, also need enter latest Hugo version at `HUGO_VERSION` parameter, after those action then deploy it.
+The submodule URL in `.gitmodules` uses SSH, so the shortest setup requires a
+GitHub SSH key:
 
-![deploy-with-vercel-01.png](/static/imgs/hugo-next/deploy-with-vercel-01.png)
-
-### 🏗 Change Framework
-
-Because Vercel doesn't defined the framework the site not work at first time, you need change it to `Hugo` and save change.
-
-![deploy-with-vercel-02.png](/static/imgs/hugo-next/deploy-with-vercel-02.png)
-
-### 🚧 Redeployment
-
-Switch to `Deployment` tag page, refer to the following snapshot for operation, after a while the site will visit success.
-
-![deploy-with-vercel-03.png](/static/imgs/hugo-next/deploy-with-vercel-03.png)
-
-## ⏬ Clone Theme
-
-Click the green button which name call `Use this template` and upper right corner on the page. Full information such as below image:
-
-![Use Template](/static/imgs/hugo-next/use-hugo-next-starter.png)
-
-After do that click the green button which name call `Create repository from template`, then will create your site code automatic, and clone it on your PC environment.
-
-Remember that need use `git submodule` command to pull all things from `hugo-theme-next` at first time.
-
+```bash
+git clone --recurse-submodules https://github.com/iankingh/hugo-theme-next-starter.git
+cd hugo-theme-next-starter
 ```
-# First time
+
+If the repository was cloned without submodules:
+
+```bash
 git submodule update --init --recursive
-# Next time
-git submodule update --remote --merge
 ```
 
-> **Note**
-> When you are in China, recommend to use `Gitee` repository url replace the submodule url in `.gitmodules` file content and then execute the above `Git` command line to improve the speed.
+For an HTTPS-only checkout, override the submodule URL locally before
+initializing it:
 
-## 💻 Local Preview
-
-Execute the `startup.sh` boot start script file which is under site root directory, when see some words like `stop` that mean success, and open browser visit
- [http://localhost:1414/](http://localhost:1414/) will enjoy yourself.
-
-```shell
-$ sh startup.sh
-========================================
-  ███╗   ██╗███████╗██╗  ██╗████████╗
-  ████╗  ██║██╔════╝╚██╗██╔╝╚══██╔══╝
-  ██╔██╗ ██║█████╗   ╚███╔╝    ██║
-  ██║╚██╗██║██╔══╝   ██╔██╗    ██║
-  ██║ ╚████║███████╗██╔╝ ██╗   ██║
-  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝   ╚═╝
-========================================
-Hugo NexT version 4.3.1
-Documentation: https://hugo-next.eu.org
-========================================
-Start building sites …
-hugo v0.102.3-b76146b129d7caa52417f8e914fc5b9271bf56fc+extended windows/amd64 BuildDate=2022-09-01T10:16:19Z VendorInfo=gohugoio
-
-                   | ZH-CN
--------------------+--------
-  Pages            |    71
-  Paginator pages  |     0
-  Non-page files   |     0
-  Static files     |    43
-  Processed images |     0
-  Aliases          |    26
-  Sitemaps         |     1
-  Cleaned          |     0
-
-Built in 233 ms
-Watching for changes in C:\xxx\hugo-theme-next-starter\{content,data,themes}
-Watching for config changes in C:\xxx\hugo-theme-next-starter\config\_default
-Environment: "development"
-Serving pages from memory
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at //localhost:1414/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
+```bash
+git config submodule.themes/hugo-theme-next.url https://github.com/hugo-next/hugo-theme-next.git
+git submodule update --init --recursive
 ```
 
-## 🎨 Snapshot
+Do not run the preview script until `themes/hugo-theme-next/` is populated:
+`startup.sh` reads the theme's `VERSION` file.
 
-![Hugo NexT Demo](/static/imgs/hugo-next/hugo-next-demo.png)
+## Preview and build
 
-## 🎉 Deployment
+```bash
+# Preview at http://localhost:1414/
+sh startup.sh
 
-Use `hugo` command to build site's static files, and deploy them into Web server just like `Nginx` and so on. Or you can enable `Github Page` function when you commit your local things there will build static files by automatic, more info:[Github Pages](https://pages.github.com/).
+# Equivalent command without the banner
+hugo server --port 1414
 
+# Production build; output is written to public/
+hugo --minify
+```
 
-> **Note**
-> Please replace actual parameter's value in `config/_default/params.yaml` config file before deploy, such as comment, analytics, share and so on.
+`public/`, generated resources, and Hugo lock files are ignored by Git.
 
-## 📜 License
+### Known configuration blocker
 
-[MIT License](LICENSE)
+In the current checkout, `config/_default/menus.en-us.yaml` defines `parent`
+twice for the `math` menu item. Hugo 0.164.0 rejects that duplicate YAML key,
+so both preview and production builds stop while loading configuration. Remove
+one of the identical `parent: example` lines in a site-maintenance change
+before using the commands above.
 
-Copyright (c) 2022, hugo-next teams.
+## Customize the starter
+
+- `config/_default/hugo.yaml`: base URL, title, language, output formats, and
+  Markdown settings.
+- `config/_default/languages.yaml`: Chinese and English language definitions.
+- `config/_default/menus*.yaml`: language-specific navigation.
+- `config/_default/params*.yaml`: NexT appearance and integration settings.
+- `content/`: bilingual about, archives, links, and example posts.
+- `data/flinks/`: language-specific friend-link data.
+- `static/`: demo images, audio, and other files copied as-is.
+- `themes/hugo-theme-next/`: the pinned upstream theme; do not copy site
+  content into this directory.
+
+At minimum, replace the sample `baseURL`, title, author metadata, menus,
+content, and any enabled third-party integration settings before publishing.
+
+## Deployment and automation
+
+This repository has **no site build or GitHub Pages deployment workflow**.
+Running `hugo --minify` produces a static `public/` directory that can be
+published by the hosting service of your choice.
+
+The only checked-in workflow, `.github/workflows/sync-2-gitee.yml`, runs when
+this repository's `main` branch receives a push, then mirrors the hard-coded
+upstream `hugo-next/hugo-theme-next-starter` source to its configured Gitee
+repository. It requires the `GITEE_RSA_PRIVATE_KEY` secret and does not build
+or deploy the example site. Forks should review or disable that workflow if
+they do not own the configured mirror.
+
+## Updating the theme
+
+The submodule tracks the upstream theme's `main` branch:
+
+```bash
+git submodule update --remote themes/hugo-theme-next
+hugo --minify
+git add themes/hugo-theme-next
+```
+
+Review the theme release notes and generated site before committing the new
+pointer.
+
+## Related repositories
+
+- `hugo-next/hugo-theme-next`: upstream theme used by this starter.
+- `iankingh/blog`: a separate, customized site built with the same theme.
+- `iankingh/iankingh.github.io`: a redirect to that blog.
+- `iankingh/iankingh`: the GitHub profile README, not part of this build.
+
+## License
+
+See [LICENSE](LICENSE).
