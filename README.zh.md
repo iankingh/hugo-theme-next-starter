@@ -51,13 +51,6 @@ hugo --minify
 
 `public/`、Hugo 產生的 resources 與 lock files 已由 Git 忽略。
 
-### 已知設定阻礙
-
-目前的 `config/_default/menus.en-us.yaml` 在 `math` 選單項目重複定義了兩次
-`parent`。Hugo 0.164.0 會拒絕這個重複 YAML key，因此預覽與正式建置都會在
-載入設定時停止。使用上述指令前，需另以站點維護變更移除其中一行相同的
-`parent: example`。
-
 ## 自訂範本
 
 - `config/_default/hugo.yaml`：網址、標題、語言、輸出格式及 Markdown 設定。

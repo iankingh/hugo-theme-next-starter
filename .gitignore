@@ -2,4 +2,3 @@
 *.hugo*.lock
 resources/
 public/
-config/development/

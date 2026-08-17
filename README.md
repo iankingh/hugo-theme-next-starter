@@ -56,14 +56,6 @@ hugo --minify
 
 `public/`, generated resources, and Hugo lock files are ignored by Git.
 
-### Known configuration blocker
-
-In the current checkout, `config/_default/menus.en-us.yaml` defines `parent`
-twice for the `math` menu item. Hugo 0.164.0 rejects that duplicate YAML key,
-so both preview and production builds stop while loading configuration. Remove
-one of the identical `parent: example` lines in a site-maintenance change
-before using the commands above.
-
 ## Customize the starter
 
 - `config/_default/hugo.yaml`: base URL, title, language, output formats, and
